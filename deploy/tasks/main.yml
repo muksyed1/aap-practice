@@ -12,6 +12,8 @@
     scm_branch: "{{ branch }}"
     scm_type: "git"
     wait: true
+    scm_update_on_launch: true
+
 
 - name: "Setup Inventory"
   awx.awx.inventory:
