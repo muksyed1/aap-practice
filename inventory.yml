@@ -2,6 +2,7 @@
 all:
   children:
     dc1:
+      vars:
+       ansible_connection: local
       hosts:
         localhost:
-          ansible_connection: local

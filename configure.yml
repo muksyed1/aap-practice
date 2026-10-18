@@ -1,0 +1,16 @@
+---
+- name: "Deploy AAP Objects"
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  module_defaults:
+    group/awx.awx.controller:
+      controller_config_file: "~/tower_cli.cfg"
+  environment:
+    CONTROLLER_OPTIONAL_API_URLPATTERN_PREFIX: /api/controller/
+
+  roles:
+    - role: deploy
+      tags: 
+        - never
+        - deploy

@@ -1,0 +1,41 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for deploy
+
+- name: "Setup Project"
+  awx.awx.project:
+    name: "{{ project_name }}"
+    description: "{{ project_description }}"
+    organization: "{{ org }}"
+    state: present
+    scm_url: "{{ scm_url }}"
+    scm_branch: "{{ branch }}"
+    scm_type: "git"
+    wait: true
+
+- name: "Setup Inventory"
+  awx.awx.inventory:
+    name: "{{ inventory_name }}"
+    description: "{{ inventory_description }}"
+    organization: "{{ org }}"
+    state: present
+
+- name: "Setup Hosts"
+  awx.awx.host:
+    name: "{{ host_name }}"
+    description: "{{ host_description }}"
+    inventory: "{{ inventory_name }}"
+    state: present
+    variables:
+      ansible_connection: local
+
+- name: "Setup Template"
+  awx.awx.job_template:
+    name: "{{ template_name }}"
+    description: "{{ template_description }}"
+    job_type: "run"
+    organization: "{{ org }}"
+    inventory: "{{ inventory_name }}"
+    project: "{{ project_name }}"
+    playbook: "{{ playbook }}"
+    state: "present"

@@ -1,0 +1,16 @@
+# AAP connection settings (hold tokens)
+*.cfg
+tower_cli.cfg
+.tower_cli.cfg
+
+# locally installed collections
+collections/
+
+# Python virtualenv and caches
+venv/
+.venv/
+__pycache__/
+
+# editor and OS
+.DS_Store
+.vscode/
