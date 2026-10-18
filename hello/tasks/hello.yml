@@ -1,6 +1,6 @@
 ---
 - name: "Hello World"
-  ansible.builtin.command:  "echo Hello World"
+  ansible.builtin.command:  "echo {{ greeting }}"
   register: output
   changed_when: false
 
