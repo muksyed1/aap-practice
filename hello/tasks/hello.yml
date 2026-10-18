@@ -1,0 +1,8 @@
+---
+- name: "Hello World"
+  ansible.builtin.command:  "echo Hello World"
+  register: output
+
+- name: "Output Hello"
+  ansible.builtin.debug:
+    msg: "{{ output.stdout }}"
